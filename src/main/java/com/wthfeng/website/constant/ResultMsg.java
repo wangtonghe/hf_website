@@ -1,6 +1,4 @@
-package com.wthfeng.website.model;
-
-import com.wthfeng.website.constant.ErrorCode;
+package com.wthfeng.website.constant;
 
 /**
  * 返回结果类
@@ -28,7 +26,7 @@ public class ResultMsg {
      */
     private Object data;
 
-    public ResultMsg(){
+    public ResultMsg() {
 
     }
 
@@ -38,9 +36,9 @@ public class ResultMsg {
         this.data = data;
     }
 
-    public ResultMsg(ErrorCode errorCode) {
-        this.code = errorCode.getCode();
-        this.desc = errorCode.getDesc();
+    public ResultMsg(ErrorInfo errorInfo) {
+        this.code = errorInfo.getCode();
+        this.desc = errorInfo.getDesc();
     }
 
     public ResultMsg(int code, String desc) {
@@ -51,6 +49,11 @@ public class ResultMsg {
     public ResultMsg(int code, Object data) {
         this.code = code;
         this.data = data;
+    }
+
+    public void setErrorInfo(ErrorInfo errorInfo) {
+        this.code = errorInfo.getCode();
+        this.desc = errorInfo.getDesc();
     }
 
     public int getCode() {

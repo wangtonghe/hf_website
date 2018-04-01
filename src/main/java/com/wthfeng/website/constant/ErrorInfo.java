@@ -6,13 +6,15 @@ package com.wthfeng.website.constant;
  * @author wangtonghe
  * @since 2018/3/31 14:18
  */
-public enum ErrorCode {
+public enum ErrorInfo {
 
 
     /**
      * 未知异常错误
      */
     UNKNOWN(1, "未知错误"),
+
+    INNER_ERROR(2, "系统内部错误"),
 
 
     /**
@@ -28,14 +30,19 @@ public enum ErrorCode {
     /**
      * 密码错误（21-29,验证问题)
      */
-    PASSWORD_ERROR(21, "密码错误");
+    PASSWORD_ERROR(21, "密码错误"),
+
+    /**
+     * 数据库异常，100-120
+     */
+    DATA_ACCESS_EXCEPTION(100, "数据库访问异常");
 
 
     private int code;
 
     private String desc;
 
-    ErrorCode(int code, String desc) {
+    ErrorInfo(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
