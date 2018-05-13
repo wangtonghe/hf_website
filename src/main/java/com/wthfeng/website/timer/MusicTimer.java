@@ -48,7 +48,7 @@ public class MusicTimer {
 
         result.forEach(musicRecommend -> System.out.println(musicRecommend.getName()));
 
-        musicRecommendDAO.saveAll(result);
+//        musicRecommendDAO.saveAll(result);
     }
 
 

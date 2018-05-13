@@ -19,13 +19,13 @@ public class TestController {
     private Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(String name) {
-        return "hello " + name + "!";
+    public String hello() {
+        return "hello ,welcome to hf website !";
     }
 
 
     @PostMapping(value = "/testPressure")
-    public ResultMsg testPressure(@RequestBody String msg) {
+    public ResultMsg testPressure(@RequestBody(required = false) String msg) {
         ResultMsg resultMsg = new ResultMsg();
         handleMsg(msg);
         resultMsg.setErrorInfo(ErrorInfo.OK);

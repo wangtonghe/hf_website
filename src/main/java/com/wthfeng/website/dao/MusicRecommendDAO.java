@@ -1,9 +1,7 @@
 package com.wthfeng.website.dao;
 
 import com.wthfeng.website.model.MusicRecommend;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +10,8 @@ import java.util.List;
  * @author wangtonghe
  * @since 2018/3/31 17:36
  */
-public interface MusicRecommendDAO extends JpaRepository<MusicRecommend, Integer> {
+@Component
+public class MusicRecommendDAO {
 
     /**
      * 根据日期获取推荐歌曲
@@ -20,7 +19,9 @@ public interface MusicRecommendDAO extends JpaRepository<MusicRecommend, Integer
      * @param date
      * @return
      */
-    List<MusicRecommend> getMusicRecommendsByPushDate(LocalDate date);
+   public List<MusicRecommend> getMusicRecommendsByPushDate(LocalDate date) {
+        return null;
+    }
 
 
     /**
@@ -29,7 +30,9 @@ public interface MusicRecommendDAO extends JpaRepository<MusicRecommend, Integer
      * @param name
      * @return
      */
-    List<MusicRecommend> getMusicRecommendByName(String name);
+   public List<MusicRecommend> getMusicRecommendByName(String name) {
+        return null;
+    }
 
 
 }
