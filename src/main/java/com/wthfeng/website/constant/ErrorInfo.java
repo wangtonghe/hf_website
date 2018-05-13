@@ -8,6 +8,10 @@ package com.wthfeng.website.constant;
  */
 public enum ErrorInfo {
 
+    /**
+     * 操作成功
+     */
+    OK(0, "操作成功"),
 
     /**
      * 未知异常错误

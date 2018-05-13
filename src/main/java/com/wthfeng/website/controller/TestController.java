@@ -1,8 +1,11 @@
 package com.wthfeng.website.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.wthfeng.website.constant.ErrorInfo;
+import com.wthfeng.website.constant.ResultMsg;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 测试
@@ -13,9 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    private Logger logger = LoggerFactory.getLogger(TestController.class);
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(String name) {
         return "hello " + name + "!";
+    }
+
+
+    @PostMapping(value = "/testPressure")
+    public ResultMsg testPressure(@RequestBody String msg) {
+        ResultMsg resultMsg = new ResultMsg();
+        handleMsg(msg);
+        resultMsg.setErrorInfo(ErrorInfo.OK);
+        return resultMsg;
+    }
+
+
+    @Async
+    public void handleMsg(String msg) {
+        logger.info("msg:{}", msg);
     }
 
 

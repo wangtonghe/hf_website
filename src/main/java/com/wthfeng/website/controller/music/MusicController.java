@@ -4,8 +4,11 @@ import com.wthfeng.website.model.MusicRecommend;
 import com.wthfeng.website.constant.ResultMsg;
 import com.wthfeng.website.service.MusicService;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,8 @@ import java.util.List;
 @RequestMapping(value = "/music")
 public class MusicController {
 
+    private Logger logger = LoggerFactory.getLogger(MusicController.class);
+
     @Autowired
     private MusicService musicService;
 
@@ -34,10 +39,12 @@ public class MusicController {
     @ApiOperation(value = "获取每日推荐歌曲")
     @RequestMapping(value = "/daily/recommend", method = RequestMethod.GET)
     public ResultMsg getDailyRecommend() {
+        logger.info("getDailyRecommend start");
         ResultMsg resultMsg = new ResultMsg();
         List<MusicRecommend> list = musicService.getTodayRecommend();
         resultMsg.setData(list);
         resultMsg.setCode(ResultMsg.OK);
+        logger.info("getDailyRecommend end");
         return resultMsg;
     }
 
